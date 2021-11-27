@@ -34,17 +34,3 @@
     transform: rotate(360deg);
   }
 }
-
-.h1 {
-	background-color: orange;
-	margin: 0px;
-	padding: 0px;
-	border: 0px;
-}
-.body {
-	background-image: url
-	("https://img.huffingtonpost.com/asset/5a0df45d1800003300f6c8ef.jpeg?cache=sRPvJijsNk&ops/1778_1000");
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-

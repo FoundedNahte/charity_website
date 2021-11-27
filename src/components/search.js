@@ -15,7 +15,7 @@ class search extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault()
 		const data = this.state
-		axios.get("http://localhost:5000/flask/hello").then(response => this.setState({ data: response.data.total }))
+		axios.get("http://localhost:5000/search?search_term={this.state}").then(response => this.setState({ data: response.data.total }))
 	}
 
 	handleInputChange = (event) => {
@@ -34,8 +34,16 @@ class search extends Component {
 				<div>
 					<p style={ {color: "white", fontWeight: "bold", padding: "5px", border: "0px", margin: "0px"} }> Search Term is: {searchTerm} </p>
 					<form onSubmit={this.handleSubmit}>
-						<p> <input style={ {fontSize: "50", padding: "5px", border: "0px", margin: "0px"} } type='text' placeholder='Search Term' name='searchTerm' onChange={this.handleInputChange}/> </p>
-						<p><Button variant="danger"> Find </Button></p>
+						<InputGroup className="col-lg-4 col-lg-offset-4" style={ {textAlign: "center" }}>
+							<FormControl
+								size="lg"
+								placeholder="Search Term"
+								type="text"
+								name="searchTerm"
+								onChange={this.handleInputChange}
+							/>
+							<Button variant="warning" type="submit"> Find </Button>
+						</InputGroup>
 					</form>
 				</div>
 	  		)
@@ -43,12 +51,16 @@ class search extends Component {
 			return (
 				<div>
 					<p style={ {color: "white", fontWeight: "bold", padding: "5px", border: "0[x", margin: "0px"} }> Search Term is: {searchTerm} </p>
-					<form onSubmit={this.handleSubmit} style={{textAlign: "center"}}>
-						<InputGroup className="w-50">
+					<form onSubmit={this.handleSubmit}>
+						<InputGroup className="col-lg-4 col-lg-offset-4" style={ {textAlign: "center"}}>
 							<FormControl
+								size="lg"
 								placeholder="Search Term"
+								type="text"
+								name="searchTerm"
+								onChange={this.handleInputChange}
 							/>
-							<Button variant="outline-danger"> Find </Button>
+							<Button variant="warning" type='submit'> Find </Button>
 						</InputGroup>
 					</form>
 				</div>
