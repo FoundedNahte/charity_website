@@ -24,18 +24,19 @@ def get():
 
         nonprofits = json.loads(r.text)["nonprofits"]
 
-        response = {}
+        response = []
 
         for nonprofit in nonprofits:
-            name = nonprofit['name']
-            url = nonprofit['profileUrl']
-            logoUrl = nonprofit['logoUrl']
-            response[name] = [name, url, logoUrl]
+            name = nonprofit.get("name", None)
+            url = nonprofit.get("profileUrl", None)
+            logoUrl = nonprofit.get("logoUrl", None)
+            description = nonprofit.get("description", None)
+            response.append({"name": name, "url": url, "logoUrl": logoUrl, "description": description})
 
         resp = flask.jsonify(response)
 
         return resp
     
-    return search_query("giveBackHacks20d9c9me")
+    return search_query("giveBackHacks20d9c9me", search_term)
 #api.add_resource(ApiHandler, '/search')
 
